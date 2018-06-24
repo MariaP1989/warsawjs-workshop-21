@@ -5,7 +5,7 @@ import ProjectItem from "../ProjectItem/ProjectItem";
 // import Counter from "./Counter";
 import { Card, Header, Segment, Button } from "semantic-ui-react";
 
-const ProjectList = ({ project, isLoading }) => (
+const ProjectList = ({ projects, isLoading }) => (
         <div>
           <Segment clearing vertical basic>
             {// <Button.Group basic floated="right">
@@ -19,9 +19,9 @@ const ProjectList = ({ project, isLoading }) => (
             </Header>
           </Segment>
           <Card.Group itemsPerRow={3}>
-            {project
+            {projects
               // .slice(0, counter)
-              .map(item => <ProjectItem key={item.id} id={item.id} />)}
+              .map(item => <ProjectItem key={item.id} id={item.id} project={item}/>)}
           </Card.Group>
         </div>
       );
@@ -31,7 +31,7 @@ ProjectList.defaultProps = {
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  project: state.project.data,
+  projects: state.project.data,
   isLoading: state.isAppLoading
 });
 
