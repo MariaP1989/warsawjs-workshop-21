@@ -1,9 +1,23 @@
 import { combineReducers } from "redux";
 
+const project = (state = {loading: false, data: []}, action) => {
+  switch (action.type) {
+    case "FETCH_PROJECTS_FAILURE":
+      return state
+    case "FETCH_PROJECTS_SUCCES":
+      return {...state, loading: false, data: action.payload}
+    default:
+      return state;
+  }
+};
+
 const isAppLoading = (state = false, action) => {
   switch (action.type) {
     case "APP_INIT":
       return true
+    // case "FETCH_PROJECTS_SUCCES": {
+    //   return false
+    // }
     default:
       return state
   }
@@ -41,5 +55,6 @@ const isAppLoading = (state = false, action) => {
 // };
 
 export default combineReducers({
-	isAppLoading
+	isAppLoading,
+  project
 })
