@@ -31,13 +31,16 @@ const isAppLoading = (state = false, action) => {
 //   }
 // };
 //
-// const selectedPoint = (state = null, action) => {
-//   switch (action.type) {
-//     // TODO
-//     default:
-//       return state;
-//   }
-// };
+const selectedPoint = (point={}, action) => {
+  switch (action.type) {
+    case "SELECT_POINT":
+    return {point: action.payload}
+    case "DESELECT_POINT":
+    return {point: null}
+    default:
+      return point;
+  }
+};
 //
 // const shops = (state = [], action) => {
 //   switch (action.type) {
@@ -56,5 +59,6 @@ const isAppLoading = (state = false, action) => {
 
 export default combineReducers({
 	isAppLoading,
-  project
+  project,
+  selectedPoint
 })
