@@ -59,7 +59,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 });
 
 const mapStateToProps = (state, ownProps) => ({
-  // getFiltredComments(state, ownProps);
   comments: getFiltredComments(state, ownProps),
   point: getSelectedPoint(state,ownProps)
 });

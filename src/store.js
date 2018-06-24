@@ -2,10 +2,11 @@ import { createStore, applyMiddleware } from 'redux'
 import { createLogger } from 'redux-logger'
 import rootReducer from './reducer'
 import { apiMiddleware } from 'redux-api-middleware'
-// import { entitiesMiddleware } from './middlewares'
+import createSagaMiddleware from 'redux-saga';
+import rootSaga from './sagas';
 
-// const sagaMiddleware = createSagaMiddleware();
-const middlewares = [apiMiddleware]
+const sagaMiddleware = createSagaMiddleware();
+const middlewares = [apiMiddleware, sagaMiddleware]
 
 if (process.env.NODE_ENV === 'development') {
 	const logger = createLogger()
@@ -24,6 +25,6 @@ export default function configureStore(initialState) {
     initialState,
 		shouldLoadDevTools
   );
-  // sagaMiddleware.run(rootSaga);
+  sagaMiddleware.run(rootSaga);
   return store
 }

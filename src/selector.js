@@ -26,3 +26,6 @@ export const getFiltredComments = createSelector(
     return filterdComments;
   }
 );
+
+export const getShops = (state) => state.shops
+export const getSimilars = state => state.similars;

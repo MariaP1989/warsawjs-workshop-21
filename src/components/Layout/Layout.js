@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Grid, Segment } from "semantic-ui-react";
+import { connect } from "react-redux";
 
 const Layout = props => {
   return (
@@ -16,5 +17,9 @@ const Layout = props => {
   );
 };
 
+const mapStateToProps = (state, ownProps) => ({
+  isAppLoading: state.isAppLoading
+});
 
-export default (Layout);
+const loadingMessage = "Za chwilę zostanie wyświetlony projekt";
+export default connect(mapStateToProps)(Layout)
